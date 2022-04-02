@@ -1,5 +1,9 @@
 *** EVALUATION ***
+<<<<<<< HEAD
 PROGRAM "C:\Users\Stephen Capar\Documents\UNI\MTRX2700-Assignment2-group3\bin\Project.absHCS12_Serial_Monitor.abs"
+=======
+PROGRAM "C:\Users\lfer9133\Documents\group3assignment2\MTRX2700-Assignment2-group3\bin\Project.absHCS12_Serial_Monitor.abs"
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 
 *********************************************************************************************
 TARGET SECTION
@@ -15,6 +19,10 @@ FILE SECTION
 mc9s12dg256.c.o                         Model: BANKED,        Lang: ANSI-C
 main.c.o                                Model: BANKED,        Lang: ANSI-C
 Start12.c.o                             Model: BANKED,        Lang: ANSI-C
+<<<<<<< HEAD
+=======
+serial.c.o                              Model: BANKED,        Lang: ANSI-C
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 
 *********************************************************************************************
 STARTUP SECTION
@@ -33,7 +41,11 @@ Section Name                    Size  Type     From       To       Segment
 .init                             21     R     0xC000     0xC014   ROM_C000
 .startData                        10     R     0xC015     0xC01E   ROM_C000
 .copy                              2     R     0xC01F     0xC020   ROM_C000
+<<<<<<< HEAD
 .text                             52     R   0x308000   0x308033   PAGE_30
+=======
+.text                             70     R   0x308000   0x308045   PAGE_30
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
@@ -379,7 +391,11 @@ Section Name                    Size  Type     From       To       Segment
 .vectSeg341_vect                   2     R     0xFFFE     0xFFFF   .vectSeg341
 
 Summary of section sizes per section type:
+<<<<<<< HEAD
 READ_ONLY (R):          57 (dec:       87)
+=======
+READ_ONLY (R):          69 (dec:      105)
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 READ_WRITE (R/W):      100 (dec:      256)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -477,8 +493,13 @@ MODULE:                 -- mc9s12dg256.c.o --
      _SCI0SR2                                    CD       1       1       0   .abs_section_cd
      _SCI0DRH                                    CE       1       1       0   .abs_section_ce
      _SCI0DRL                                    CF       1       1       0   .abs_section_cf
+<<<<<<< HEAD
      _SCI1CR1                                    D2       1       1       0   .abs_section_d2
      _SCI1CR2                                    D3       1       1       0   .abs_section_d3
+=======
+     _SCI1CR1                                    D2       1       1       1   .abs_section_d2
+     _SCI1CR2                                    D3       1       1       1   .abs_section_d3
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
      _SCI1SR1                                    D4       1       1       0   .abs_section_d4
      _SCI1SR2                                    D5       1       1       0   .abs_section_d5
      _SCI1DRH                                    D6       1       1       0   .abs_section_d6
@@ -722,7 +743,11 @@ MODULE:                 -- mc9s12dg256.c.o --
      _PWMDTY45                                   C0       2       2       0   .abs_section_c0
      _PWMDTY67                                   C2       2       2       0   .abs_section_c2
      _SCI0BD                                     C8       2       2       0   .abs_section_c8
+<<<<<<< HEAD
      _SCI1BD                                     D0       2       2       0   .abs_section_d0
+=======
+     _SCI1BD                                     D0       2       2       2   .abs_section_d0
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
      _ATD1CTL23                                 122       2       2       0   .abs_section_122
      _ATD1CTL45                                 124       2       2       0   .abs_section_124
      _ATD1DR0                                   130       2       2       0   .abs_section_130
@@ -739,31 +764,56 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
 MODULE:                 -- main.c.o --
 - PROCEDURES:
+<<<<<<< HEAD
      main                                    308000       B      11       2   .text       
 - VARIABLES:
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
      Init                                    30800B      29      41       2   .text       
+=======
+     main                                    308000       F      15       2   .text       
+- VARIABLES:
+MODULE:                 -- Start12.c.o --
+- PROCEDURES:
+     Init                                    30800F      29      41       2   .text       
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
      _Startup                                  C000      15      21       0   .init       
 - VARIABLES:
      _startupData                              C015       6       6       3   .startData  
 - LABELS:
      __SEG_END_SSTACK                          1100       0       0       1               
+<<<<<<< HEAD
+=======
+MODULE:                 -- serial.c.o --
+- PROCEDURES:
+     SCI1_setup                              308038       E      14       2   .text       
+- VARIABLES:
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
+<<<<<<< HEAD
   main.c.o                                     0     11      0
   Start12.c.o                                  0     62      0
+=======
+  main.c.o                                     0     15      0
+  Start12.c.o                                  0     62      0
+  serial.c.o                                   0     14      0
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
   other                                      256     12      2
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
+<<<<<<< HEAD
   main Init 
+=======
+  main Init SCI1_setup 
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 SECTION: ".init"
   _Startup 
 SECTION: ".abs_section_8"
@@ -1578,9 +1628,15 @@ OBJECT LIST SORTED BY ADDRESS
      _SCI0SR2                                    CD       1       1       0   .abs_section_cd
      _SCI0DRH                                    CE       1       1       0   .abs_section_ce
      _SCI0DRL                                    CF       1       1       0   .abs_section_cf
+<<<<<<< HEAD
      _SCI1BD                                     D0       2       2       0   .abs_section_d0
      _SCI1CR1                                    D2       1       1       0   .abs_section_d2
      _SCI1CR2                                    D3       1       1       0   .abs_section_d3
+=======
+     _SCI1BD                                     D0       2       2       2   .abs_section_d0
+     _SCI1CR1                                    D2       1       1       1   .abs_section_d2
+     _SCI1CR2                                    D3       1       1       1   .abs_section_d3
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
      _SCI1SR1                                    D4       1       1       0   .abs_section_d4
      _SCI1SR2                                    D5       1       1       0   .abs_section_d5
      _SCI1DRH                                    D6       1       1       0   .abs_section_d6
@@ -1795,8 +1851,14 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXTBPR                                2BD       1       1       0   .abs_section_2bd
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
      _Startup                                  C000      15      21       0   .init       
+<<<<<<< HEAD
      main                                    308000       B      11       2   .text       
      Init                                    30800B      29      41       2   .text       
+=======
+     main                                    308000       F      15       2   .text       
+     Init                                    30800F      29      41       2   .text       
+     SCI1_setup                              308038       E      14       2   .text       
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -1813,7 +1875,13 @@ Filling bytes inserted
 OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 _Startup                  USES __SEG_END_SSTACK Init main 
+<<<<<<< HEAD
 Init                      USES _startupData 
+=======
+main                      USES SCI1_setup 
+Init                      USES _startupData 
+SCI1_setup                USES _SCI1CR1 _SCI1CR2 _SCI1BD 
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -1821,7 +1889,13 @@ DEPENDENCY TREE
  main and _Startup Group
  | 
  +- main                
+<<<<<<< HEAD
  |    
+=======
+ |  | 
+ |  +- SCI1_setup          
+ |       
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
  +- _Startup            
     | 
     +- Init                
@@ -1835,5 +1909,9 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 5
+<<<<<<< HEAD
 Total size of all blocks to be downloaded: 87
+=======
+Total size of all blocks to be downloaded: 105
+>>>>>>> e70c888ae231fcc3d348c1f7f95be612584d67bd
 
