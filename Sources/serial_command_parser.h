@@ -1,6 +1,6 @@
-#ifndef SCI1_HEADER
-#define SCI1_HEADER
+#ifndef PARSER_HEADER
+#define PARSER_HEADER
 
-void serial_parser(serial_in (str));
+void serial_parser(char *serial_in, char **function_names);
 
 #endif

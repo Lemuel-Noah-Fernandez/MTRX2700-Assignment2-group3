@@ -1,7 +1,7 @@
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
 
-
+#include "serial_command_parser.h"
 
 void main(void) {
   /* put your own code here */
