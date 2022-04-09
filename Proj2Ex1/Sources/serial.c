@@ -41,7 +41,7 @@ void SerialInitialise(int baudRate, SerialPort *serial_port) {
 	  break;
   }
   
-  *(serial_port->ControlRegister2) = SCI1CR2_RE_MASK | SCI1CR2_TE_MASK | SCI1CR2_TIE_MASK;
+  *(serial_port->ControlRegister2) = SCI1CR2_RE_MASK | SCI1CR2_TE_MASK | SCI1CR2_TCIE_MASK;
   *(serial_port->ControlRegister1) = 0x00;
 }
     
