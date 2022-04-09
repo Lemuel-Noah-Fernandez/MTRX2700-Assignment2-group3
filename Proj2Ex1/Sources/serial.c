@@ -41,7 +41,7 @@ void SerialInitialise(int baudRate, SerialPort *serial_port) {
 	  break;
   }
   
-  *(serial_port->ControlRegister2) = SCI1CR2_RE_MASK | SCI1CR2_TE_MASK | SCI1CR2_TCIE_MASK;
+  *(serial_port->ControlRegister2) = SCI1CR2_RE_MASK | SCI1CR2_TE_MASK | SCI1CR2_TIE_MASK;
   *(serial_port->ControlRegister1) = 0x00;
 }
     
@@ -84,12 +84,13 @@ void SerialInputString(SerialPort *serial_port, char *pt) {
 __interrupt void SCI1_ISR(void) { 
      int counter = 0;
      char string_input[8], string_buffer[8];
-     sprintf(&string_input[0], "Bruh\n\r");
+     //sprintf(&string_input[0], "Bruh\n");
      
+     //fgets(string_input, 8, &SCI1);
      SerialInputString(&SCI1, &string_input[0]);
-     sprintf(&string_buffer[0], &SCI1);
-     //SerialOutputString(&string_buffer[0], &SCI0);
-     SerialOutputString(&string_input[0], &SCI0);
+     sprintf(&string_buffer[0], &string_input[0]);
+     SerialOutputString(&string_buffer[0], &SCI0);
+     //SerialOutputString(&string_input[0], &SCI0);
     
 }
 

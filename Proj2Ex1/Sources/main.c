@@ -18,12 +18,12 @@ void main(void) {
 
   SerialInitialise(BAUD_9600, &SCI0);
   SerialInitialise(BAUD_9600, &SCI1);
-  
+  SerialInputString(&SCI1, &string_input[0]);
   SerialOutputString(&string_buffer[0], &SCI0);
   
 
 	EnableInterrupts;
-   SerialInputString(&SCI1, &string_input[0]);
+  
 
   for(;;) {
     _FEED_COP(); /* feeds the dog */
