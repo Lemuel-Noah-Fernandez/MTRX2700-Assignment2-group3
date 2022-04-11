@@ -33,7 +33,7 @@ enum {
 // Input: baud rate as defined in the enum
 void SerialInitialise(int baudRate, SerialPort *serial_port);
 
-
+//this is the interrupt function
 __interrupt void SCI1_ISR(SerialPort *serial_port_in, SerialPort *serial_port_out, char *pt, char *input_string);
  
  
