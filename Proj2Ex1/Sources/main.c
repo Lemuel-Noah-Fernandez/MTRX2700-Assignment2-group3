@@ -7,24 +7,21 @@
 // #define for the serial port
 #include "serial.h"
 
-const int NUMBER_OF_SHAPES = 16;
-
 
 void main(void) {
   
   int counter = 0;
-  char string_buffer[8], string_input[8];
-  sprintf(&string_buffer[0], "Why?\n\r");
-
+  char *string_buffer[256];
+  char *print_string = "Dudes be like 'Subway Sucks', my brother in Christ, you made the sandwich!x";
+  
   SerialInitialise(BAUD_9600, &SCI0);
   SerialInitialise(BAUD_9600, &SCI1);
-  SerialInputString(&SCI1, &string_input[0]);
-  SerialOutputString(&string_buffer[0], &SCI0);
-  
+  //set function parameters
+  //&print_string[0], to also &string_buffer[0] to see result of input pushed to terminal
+  SCI1_ISR(&SCI1, &SCI1, &string_buffer[0], &print_string[0]);
 
 	EnableInterrupts;
   
-
   for(;;) {
     _FEED_COP(); /* feeds the dog */
   } /* loop forever */
@@ -32,3 +29,5 @@ void main(void) {
   
   /* please make sure that you never leave main */
 }
+
+

@@ -10,7 +10,7 @@ __interrupt void UnimplementedISR(void)
    asm BGND;
 }
 
-
+__interrupt void SCI1_ISR(void);
 
 typedef void (*near tIsrFunc)(void);
 const tIsrFunc _vect[] @0xFF80 = {     /* Interrupt table */
