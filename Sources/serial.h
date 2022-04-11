@@ -32,31 +32,9 @@ enum {
 // SerialInitialise - initialise the serial port
 // Input: baud rate as defined in the enum
 void SerialInitialise(int baudRate, SerialPort *serial_port);
- 
 
-// SerialOutputChar - output a char to the serial port
-//  note: this version waits until the port is ready (not using interrupts)
-// Input: char to be transferred
-void SerialOutputChar(char, SerialPort *serial_port);  
- 
 
-// SerialOutputString - output a NULL TERMINATED string to the serial port
-// Input: pointer to a NULL-TERMINATED string (if not null terminated, there will be problems)
-void SerialOutputString(char *pt, SerialPort *serial_port); 
-
-// SerialOutputChar - output a char to the serial port
-//  note: this version waits until the port is ready (not using interrupts)
-// Input: char to be transferred
-void SerialInputChar(SerialPort *serial_port, char);  
- 
-
-// SerialOutputString - output a NULL TERMINATED string to the serial port
-// Input: pointer to a NULL-TERMINATED string (if not null terminated, there will be problems)
-void SerialInputString(SerialPort *serial_port, char *pt); 
-
-// Serial interrupt definition
-__interrupt void SCI1_ISR(void);
-
+__interrupt void SCI1_ISR(SerialPort *serial_port_in, SerialPort *serial_port_out, char *pt, char *input_string);
  
  
 #endif
