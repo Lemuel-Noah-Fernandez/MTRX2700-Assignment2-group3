@@ -6,6 +6,7 @@
 
 // #define for the serial port
 #include "serial.h"
+#include "music.h"
 
 
 void main(void) {
