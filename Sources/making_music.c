@@ -109,6 +109,25 @@ void delay(unsigned int time) {
       for(k=0;k<4000;k++);
 }
 
+// Music run time function
+int music_runtime(unsigned int score[]) {
+  int x = 0;
+  int total_time = 0;
+  int time_for_note;
+  while(score[x]) {
+    
+    if(x == 0) {
+      time_for_note = score[1];
+      total_time += time_for_note;
+    }else if(x % 3 == 0) {
+      time_for_note = score[x+1];
+      total_time += time_for_note;
+    }
+    x++;
+  }
+  total_time *= 10;
+  return total_time;
+}
 
 // Interrupt vector
 #pragma CODE_SEG __NEAR_SEG NON_BANKED

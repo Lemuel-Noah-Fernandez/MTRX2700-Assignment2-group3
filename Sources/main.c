@@ -23,6 +23,9 @@ unsigned int score[] = {
  A, 25, 4, D, 25, 5, D, 10, 4, C, 25, 4, C, 10, 4, A, 25, 3, E, 25, 4, D, 50, 4
 };
 
+int time;
+char time_string[10];
+
 void main(void) {
   
   int counter = 0;
@@ -35,6 +38,8 @@ void main(void) {
   //&print_string[0], to also &string_buffer[0] to see result of input pushed to terminal
   SCI1_ISR(&SCI1, &SCI1, &string_buffer[0], &print_string[0]);
 
+  time = music_runtime(score); // The song will take this many ms to play
+  sprintf(&time_string[0], "%dx", time); // Converts the time integer to a string for serial output
 	making_music(score);
 	
 	//EnableInterrupts;
