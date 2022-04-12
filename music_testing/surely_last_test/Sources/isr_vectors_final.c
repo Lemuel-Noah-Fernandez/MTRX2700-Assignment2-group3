@@ -1,7 +1,8 @@
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
 
-//#include "timers.h"
+#include "serial_test.h"
+#include "making_music.h"
 
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
 __interrupt void UnimplementedISR(void)
@@ -10,7 +11,8 @@ __interrupt void UnimplementedISR(void)
    asm BGND;
 }
 
-__interrupt void musicISR();
+__interrupt void SCI1_ISR(void);
+__interrupt void musicISR(void);
 
 typedef void (*near tIsrFunc)(void);
 const tIsrFunc _vect[] @0xFF80 = {     /* Interrupt table */
@@ -56,8 +58,8 @@ const tIsrFunc _vect[] @0xFF80 = {     /* Interrupt table */
         UnimplementedISR,                 /* vector 0x18 (PORT J) */
         UnimplementedISR,                 /* vector 0x17 (ATD1) */
         UnimplementedISR,                 /* vector 0x16 (ATD0) */
-        UnimplementedISR,                 /* vector 0x15 (SCI1) */
-        UnimplementedISR,                 /* vector 0x14 (SCI0) */
+        SCI1_ISR,                         /* vector 0x15 (SCI1) */
+        UnimplementedISR,                         /* vector 0x14 (SCI0) */
         UnimplementedISR,                 /* vector 0x13 */
         UnimplementedISR,                 /* vector 0x12 */
         UnimplementedISR,                 /* vector 0x11 */

@@ -10,6 +10,7 @@
 
 //*Declaring Functions 
 
+
 //DETERMINATING OPERATIONS
 const char *convert_string_to_lower_case(char *serial_in);
 int command_syntax_identifier(char *serial_in);
@@ -20,7 +21,7 @@ void say_operation(char *serial_in);
 
 //MISC FUNCTIONS
 char * operand_distiller(char *command);
-void no_operand();
+void no_operand(void);
 void incorrect_operation();
 
 /*DETERMINATING OPERATION*/
@@ -103,7 +104,7 @@ void run_operation(char *serial_in, char **function_names){
   /*determine function name by index number in array and return to main*/
   for(i = 0; i < 2; i++){
     if(strcmp(function_names[i], operand) == 0){
-      function_selector(i);
+      //function_selector(i);
     }
   }
 }
