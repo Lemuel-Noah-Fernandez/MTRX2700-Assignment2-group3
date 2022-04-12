@@ -20,8 +20,8 @@ void say_operation(char *serial_in);
 
 //MISC FUNCTIONS
 char * operand_distiller(char *command);
-void no_operand();
-void incorrect_operation();
+void no_operand(void);
+void incorrect_operation(void);
 
 /*DETERMINATING OPERATION*/
 void serial_parser(char *serial_in, char **function_names) {
@@ -103,35 +103,37 @@ void run_operation(char *serial_in, char **function_names){
   /*determine function name by index number in array and return to main*/
   for(i = 0; i < 2; i++){
     if(strcmp(function_names[i], operand) == 0){
-      function_selector(i);
+      function_selector(i,operand);
     }
   }
 }
 
 void say_operation(char *serial_in){
-  /*some_function(serial_in)*/
+  signed char *phrase = operand_distiller(serial_in);
+
+  SCI1_ISR(&SCI1, &SCI1,"x", phrase);
 }
 
 /*MISC FUNCTIONS*/
 char * operand_distiller(char *command){
-  char operand[15];
+  char *operand;
   
   char *token = strtok(command, " ");
   
   token = strtok(NULL, " ");
   
-  strcpy(operand, token);
+  operand = token;
   
   return operand;
   
 }
 
-void no_operand(){
-  /*some_function("ERROR! No operand inputted")*/
+void no_operand(void){
+  SCI1_ISR(&SCI1, &SCI1,"x","ERROR! NO OPERAND FOUND");
 }
 
-void incorrect_operation() {
-  /*some_function("ERROR! Operation does not exist")*/
+void incorrect_operation(void) {
+  SCI1_ISR(&SCI1, &SCI1,"x","ERROR! Operation does not exist");
 }
 
 /*Music box Converter*/
