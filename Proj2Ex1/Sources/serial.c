@@ -47,13 +47,11 @@ void SerialInitialise(int baudRate, SerialPort *serial_port) {
 }
 
 
-
 // look at the isr_vectors.c for where this function is 
 //  added to the ISR vector table
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
 __interrupt void SCI1_ISR(SerialPort *serial_port_in, SerialPort *serial_port_out, char *pt, char *input_string) {
   //set counter to read for 256 bits or until end character falg 'x' is reached
-  counter = 0;
   char output_string[256];
   while(counter < 256 && *(serial_port_in->DataRegister) != 'x'){
     while((*(serial_port_in->StatusRegister) & SCI1SR1_RDRF_MASK) == 0){
