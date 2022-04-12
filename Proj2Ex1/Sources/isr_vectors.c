@@ -2,6 +2,7 @@
 #include "derivative.h"      /* derivative-specific definitions */
 
 #include "serial.h"
+#include "making_music.h"
 
 #pragma CODE_SEG __NEAR_SEG NON_BANKED /* Interrupt section for this module. Placement will be in NON_BANKED area. */
 __interrupt void UnimplementedISR(void)
@@ -11,6 +12,7 @@ __interrupt void UnimplementedISR(void)
 }
 
 __interrupt void SCI1_ISR(void);
+__interrupt void musicISR(void);
 
 typedef void (*near tIsrFunc)(void);
 const tIsrFunc _vect[] @0xFF80 = {     /* Interrupt table */
@@ -62,9 +64,9 @@ const tIsrFunc _vect[] @0xFF80 = {     /* Interrupt table */
         UnimplementedISR,                 /* vector 0x12 */
         UnimplementedISR,                 /* vector 0x11 */
         UnimplementedISR,                 /* vector 0x10 (TOF) */
-        UnimplementedISR,                          /* vector 0x0F (TIE, C7I)  */
+        UnimplementedISR,                 /* vector 0x0F (TIE, C7I)  */
         UnimplementedISR,                 /* vector 0x0E (TIE, C6I)  */
-        UnimplementedISR,                 /* vector 0x0C (TIE, C5I)  */
+        musicISR,                         /* vector 0x0C (TIE, C5I)  */
         UnimplementedISR,                 /* vector 0x0C (TIE, C4I)  */
         UnimplementedISR,                 /* vector 0x0B (TIE, C3I)  */
         UnimplementedISR,                 /* vector 0x0A (TIE, C2I)  */
