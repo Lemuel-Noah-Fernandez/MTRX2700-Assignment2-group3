@@ -8,14 +8,13 @@ int note;
 int i = 0;
 int j;
 int k;
-int flag = 0; // Flag at 1 when playing a song, 0 when ready to receive new tune
 
-
-void making_music(unsigned int score[]) {
+int making_music(unsigned int score[], int flag) {
   
   timer_setup();
-  play(score);
-  for(;;);
+  play(score, flag);
+  //for(;;);
+  return flag;
   
 }
 
@@ -31,7 +30,7 @@ void timer_setup(void) {
 
 
 // Play music
-void play(unsigned int score[]) {
+void play(unsigned int score[], int flag) {
   int x = 0;
   while(score[x]) {
     flag = 1; // Flag = 1 while music is playing

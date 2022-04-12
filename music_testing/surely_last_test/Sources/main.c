@@ -38,6 +38,7 @@ unsigned int score[] = {
 };
 
 int time;
+int flag = 0;
 char time_string[10];
 
 /*
@@ -57,18 +58,23 @@ void main(void) {
   char *print_string = "Dudes be like 'Subway Sucks', my brother in Christ, you made the sandwich!x";
 
 
-  SerialInitialise(BAUD_9600, &SCI0);
-  SerialInitialise(BAUD_9600, &SCI1);
+  //SerialInitialise(BAUD_9600, &SCI0);
+  //SerialInitialise(BAUD_9600, &SCI1);
   time = music_runtime(score); // The song will take this many ms to play
   sprintf(&time_string[0], "%dx", time); // Converts the time integer to a string for serial output
 
   //flag = 4;
   //set function parameters
   //&print_string[0], to also &string_buffer[0] to see result of input pushed to terminal
-  SCI1_ISR(&SCI1, &SCI1, &string_buffer[0], &print_string[0]);
+  //SCI1_ISR(&SCI1, &SCI1, &string_buffer[0], &print_string[0]);
 
-  EnableInterrupts;
-  making_music(score);
+  //EnableInterrupts;
+  for(;;) {
+   if(flag == 0) {
+    
+    flag = making_music(score, flag);
+   }
+  }
   
   for(;;) {
     _FEED_COP(); /* feeds the dog /
