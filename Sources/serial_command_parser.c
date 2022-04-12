@@ -1,15 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
 
 #include "serial_command_parser.h"
+#include "serial.h"
 
-//Declaring Functions 
+//*Declaring Functions 
+
+//DETERMINATING OPERATIONS
 const char *convert_string_to_lower_case(char *serial_in);
 int command_syntax_identifier(char *serial_in);
 
+//OPERATION INIT
+void run_operation(char *serial_in, char **function_names);
+void say_operation(char *serial_in);
+
+//MISC FUNCTIONS
+char * operand_distiller(char *command);
+void no_operand();
+void incorrect_operation();
 
 /*DETERMINATING OPERATION*/
 void serial_parser(char *serial_in, char **function_names) {
@@ -30,11 +42,11 @@ void serial_parser(char *serial_in, char **function_names) {
     break;
     case 1:
       /*A say command has been called, which will output what is in serial after the command*/
-      say_operation(serial_in, function_names);
+      say_operation(serial_in);
     break;
     case 2:
       /*A run command has been called to run a function*/
-      run_operation(serial_in);
+      run_operation(serial_in, function_names);
     break;
     
     default:
@@ -88,6 +100,7 @@ void run_operation(char *serial_in, char **function_names){
     no_operand();
   }
   
+  /*determine function name by index number in array and return to main*/
   for(i = 0; i < 2; i++){
     if(strcmp(function_names[i], operand) == 0){
       function_selector(i);
@@ -100,14 +113,12 @@ void say_operation(char *serial_in){
 }
 
 /*MISC FUNCTIONS*/
-const char * operand_distiller(char *command){
-  char *token;
-  char *operand;
-  const char s[2] = " ";
+char * operand_distiller(char *command){
+  char operand[15];
   
-  token = strtok(command, s);
+  char *token = strtok(command, " ");
   
-  token = strok(NULL, s);
+  token = strtok(NULL, " ");
   
   strcpy(operand, token);
   
@@ -122,3 +133,42 @@ void no_operand(){
 void incorrect_operation() {
   /*some_function("ERROR! Operation does not exist")*/
 }
+
+/*Music box Converter*/
+unsigned int *Music_input_converter(char *input){
+  int i = 0;  
+  int *music_score = (int*)malloc(4); //array to hold the values for the music box
+  
+  char * token = strtok(input, ",")
+  
+  while(token != NULL){
+    music_score = realloc(music_score, (sizeof(music_score)/sizeof(int)) + 1);
+    
+    music_score[i] = conver_string_to_binary_to_int(token);
+    
+    i++;
+    token = strtok(NULL, ",");
+  }
+ 
+  music_score[i-1] = 0;
+  
+  return music_score; 
+}
+
+int conver_string_to_brinary_to_int(char *string){
+
+  int binarynum = atoi(string);
+
+  int num = 0, temp = 0, remainder;
+    while (binarynum!=0)
+    {
+        remainder = binarynum % 10;
+        binarynum = binarynum / 10;
+        num = num + remainder*pow(2,temp);
+        temp++;
+    }
+    return num;
+
+}    
+
+
