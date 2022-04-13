@@ -1,5 +1,5 @@
 # MTRX2700-Assignment2-group3
-Exercise 1:
+###Exercise 1:
 
 The exercise 1 functions include ‘SerialInitialise’ and the interrupt service routine ‘SCI1_ISR’. The serial document begins by declaring some serial port structs. These structs are declared as extern variables in serial.h and are used in the functions in serial and main.
 
@@ -21,3 +21,12 @@ Testing:
   - Use show location of variable in data table, doing this can see if data is read from the serial port into memory
   - Changing input string and output string to test if it can handle a variety of strings
   - Using different serial ports, and different combinations of serial ports to see if module can work with any serial ports
+
+###Exercise 2:
+
+###Exercise 3:
+The exercise 3 module utilised interrupts from the TC5 timer module, to output different frequencies onto the Dragonboard's PT5 port. This resulted in a tune being played. First, a variable `score` is defined as an unsigned int array and is sent to the terminal through use of the Exercise 2's functions. This variable is then used as an input argument for the `making_music` function, which loops through the score changing the `note` variable with each iteration, therby triggering the TC5 interrupt.
+
+Testing
+- Running through various scores and checking it's effect on the Dragonboard's music in real time
+- Checking the variables associated with `time` and `note` in the debugger to see if it is changing correctly
