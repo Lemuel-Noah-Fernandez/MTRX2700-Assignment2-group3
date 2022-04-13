@@ -27,6 +27,8 @@ Testing:
 ###Exercise 3:
 The exercise 3 module utilised interrupts from the TC5 timer module, to output different frequencies onto the Dragonboard's PT5 port. This resulted in a tune being played. First, a variable `score` is defined as an unsigned int array and is sent to the terminal through use of the Exercise 2's functions. This variable is then used as an input argument for the `making_music` function, which loops through the score changing the `note` variable with each iteration, therby triggering the TC5 interrupt.
 
+Additionaly, there are various functions with `making_music`. `Delay(time)` takes in an int as an argument and creates a delay equal to that integer * 10 ms. `timer_setup` initialises the timer and interrupt sequance and `octave_checker` changes the `note` variable depending on which octave the note is in. 
+
 Testing
 - Running through various scores and checking it's effect on the Dragonboard's music in real time
 - Checking the variables associated with `time` and `note` in the debugger to see if it is changing correctly
