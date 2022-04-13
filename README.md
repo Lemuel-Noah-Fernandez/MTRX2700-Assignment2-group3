@@ -18,6 +18,6 @@ SCI_ISR:
   -	This can be configured to display a pre filled buffer or the input serial port
 
 Testing:
-  - USe show location of variable in data table, doing this can see if data is read from the serial port into memory
+  - Use show location of variable in data table, doing this can see if data is read from the serial port into memory
   - Changing input string and output string to test if it can handle a variety of strings
   - Using different serial ports, and different combinations of serial ports to see if module can work with any serial ports
