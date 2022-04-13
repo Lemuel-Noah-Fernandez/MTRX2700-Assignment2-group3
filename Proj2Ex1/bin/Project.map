@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "C:\Users\eglyn\Documents\dub city\Proj2Ex1\bin\Project.abs"
+PROGRAM "C:\Users\eglyn\Desktop\Proj2Ex1\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -27,7 +27,7 @@ _startupData is allocated at 0xC00B and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
   _Range   pZeroOut       0x2000     26
-  _Copy    *toCopyDownBeg 0xC1CE
+  _Copy    *toCopyDownBeg 0xC119
 } _startupData;
 
 *********************************************************************************************
@@ -36,10 +36,10 @@ Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
 .init                             11     R     0xC000     0xC00A   ROM_C000
 .startData                        10     R     0xC00B     0xC014   ROM_C000
-.rodata1                         257     R     0xC015     0xC115   ROM_C000
-NON_BANKED                       184     R     0xC116     0xC1CD   ROM_C000
-.copy                             29     R     0xC1CE     0xC1EA   ROM_C000
-.text                            168     R   0x308000   0x3080A7   PAGE_30
+.rodata1                          76     R     0xC015     0xC060   ROM_C000
+NON_BANKED                       184     R     0xC061     0xC118   ROM_C000
+.copy                             29     R     0xC119     0xC135   ROM_C000
+.text                            166     R   0x308000   0x3080A5   PAGE_30
 .stack                          4096   R/W     0x1000     0x1FFF   RAM
 .data                             24   R/W     0x2000     0x2017   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
@@ -388,7 +388,7 @@ NON_BANKED                       184     R     0xC116     0xC1CD   ROM_C000
 .vectSeg342_vect                   2     R     0xFFFE     0xFFFF   .vectSeg342
 
 Summary of section sizes per section type:
-READ_ONLY (R):         313 (dec:      787)
+READ_ONLY (R):         25C (dec:      604)
 READ_WRITE (R/W):     101A (dec:     4122)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -748,12 +748,12 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
 MODULE:                 -- main.c.o --
 - PROCEDURES:
-     main                                    308000      3D      61       2   .text       
+     main                                    308000      3B      59       2   .text       
 - VARIABLES:
-     STRING.My.name.is.Yoshikage.1             C015     101     257       1   .rodata1    
+     STRING.Dudes.be.like..Subwa.1             C015      4C      76       1   .rodata1    
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
-     Init                                    30803D      29      41       2   .text       
+     Init                                    30803B      29      41       2   .text       
      _Startup                                  C000       B      11       0   .init       
 - VARIABLES:
      _startupData                              C00B       6       6       3   .startData  
@@ -761,19 +761,19 @@ MODULE:                 -- Start12.c.o --
      __SEG_END_SSTACK                          2000       0       0       1               
 MODULE:                 -- rtshc12.c.o (ansib.lib) --
 - PROCEDURES:
-     _CASE_CHECKED_BYTE                        C116      14      20       1   NON_BANKED  
+     _CASE_CHECKED_BYTE                        C061      14      20       1   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- serial.c.o --
 - PROCEDURES:
-     SerialInitialise                        308066      42      66       4   .text       
-     SCI1_ISR                                  C12A      A2     162       2   NON_BANKED  
+     SerialInitialise                        308064      42      66       4   .text       
+     SCI1_ISR                                  C075      A2     162       2   NON_BANKED  
 - VARIABLES:
-     SCI1                                      2000       C      12       3   .data       
-     SCI0                                      200C       C      12       1   .data       
+     SCI1                                      2000       C      12       2   .data       
+     SCI0                                      200C       C      12       2   .data       
      counter                                   2018       2       2       8   .bss        
 MODULE:                 -- isr_vectors.c.o --
 - PROCEDURES:
-     UnimplementedISR                          C1CC       2       2      62   NON_BANKED  
+     UnimplementedISR                          C117       2       2      62   NON_BANKED  
 - VARIABLES:
      _vect                                     FF80      7E     126       0   .abs_section_ff80
 
@@ -782,7 +782,7 @@ MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
-  main.c.o                                     0     61    257
+  main.c.o                                     0     59     76
   Start12.c.o                                  0     52      0
   rtshc12.c.o (ansib.lib)                      0     20      0
   serial.c.o                                  26    228      0
@@ -801,7 +801,7 @@ SECTION: ".bss"
 SECTION: ".init"
   _Startup 
 SECTION: ".rodata1"
-  STRING.My.name.is.Yoshikage.1 
+  STRING.Dudes.be.like..Subwa.1 
 SECTION: "NON_BANKED"
   _CASE_CHECKED_BYTE SCI1_ISR UnimplementedISR 
 SECTION: ".abs_section_8"
@@ -1834,18 +1834,18 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXDLR                                 2BC       1       1       0   .abs_section_2bc
      _CAN4TXTBPR                                2BD       1       1       0   .abs_section_2bd
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
-     SCI1                                      2000       C      12       3   .data       
-     SCI0                                      200C       C      12       1   .data       
+     SCI1                                      2000       C      12       2   .data       
+     SCI0                                      200C       C      12       2   .data       
      counter                                   2018       2       2       8   .bss        
      _Startup                                  C000       B      11       0   .init       
-     STRING.My.name.is.Yoshikage.1             C015     101     257       1   .rodata1    
-     _CASE_CHECKED_BYTE                        C116      14      20       1   NON_BANKED  
-     SCI1_ISR                                  C12A      A2     162       2   NON_BANKED  
-     UnimplementedISR                          C1CC       2       2      62   NON_BANKED  
+     STRING.Dudes.be.like..Subwa.1             C015      4C      76       1   .rodata1    
+     _CASE_CHECKED_BYTE                        C061      14      20       1   NON_BANKED  
+     SCI1_ISR                                  C075      A2     162       2   NON_BANKED  
+     UnimplementedISR                          C117       2       2      62   NON_BANKED  
      _vect                                     FF80      7E     126       0   .abs_section_ff80
-     main                                    308000      3D      61       2   .text       
-     Init                                    30803D      29      41       2   .text       
-     SerialInitialise                        308066      42      66       4   .text       
+     main                                    308000      3B      59       2   .text       
+     Init                                    30803B      29      41       2   .text       
+     SerialInitialise                        308064      42      66       4   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -1865,19 +1865,19 @@ rtshc12.c.o (ansib.lib):
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xC1CE ---- SIZE       4 ---
+------- ROM-ADDRESS: 0xC119 ---- SIZE       4 ---
 Filling bytes inserted
  00172001
-------- ROM-ADDRESS: 0xC1D2 ---- RAM-ADDRESS: 0x2001 ---- SIZE      11 ---
+------- ROM-ADDRESS: 0xC11D ---- RAM-ADDRESS: 0x2001 ---- SIZE      11 ---
 Name of initialized Object : SCI1:1
  D000D100D2 00D300D700 D4
-------- ROM-ADDRESS: 0xC1DD ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC128 ---- SIZE       1 ---
 Filling bytes inserted
  00
-------- ROM-ADDRESS: 0xC1DE ---- RAM-ADDRESS: 0x200D ---- SIZE      11 ---
+------- ROM-ADDRESS: 0xC129 ---- RAM-ADDRESS: 0x200D ---- SIZE      11 ---
 Name of initialized Object : SCI0:1
  C800C900CA 00CB00CF00 CC
-------- ROM-ADDRESS: 0xC1E9 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xC134 ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -1887,7 +1887,7 @@ OBJECT-DEPENDENCIES SECTION
 _Startup                  USES __SEG_END_SSTACK Init main 
 SCI1_ISR                  USES counter SCI1 
 _vect                     USES UnimplementedISR SCI1_ISR 
-main                      USES STRING.My.name.is.Yoshikage.1 SCI0 
+main                      USES STRING.Dudes.be.like..Subwa.1 SCI0 
                                 SerialInitialise SCI1 SCI1_ISR 
 Init                      USES _startupData 
 SerialInitialise          USES _CASE_CHECKED_BYTE 
@@ -1923,6 +1923,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 7
-Total size of all blocks to be downloaded: 787
+Number of blocks to be downloaded: 6
+Total size of all blocks to be downloaded: 604
 

@@ -18,7 +18,8 @@ void main(void) {
   SerialInitialise(BAUD_9600, &SCI1);
   //set function parameters
   //&print_string[0], to also &string_buffer[0] to see result of input pushed to terminal
-  SCI1_ISR(&SCI1, &SCI1, &string_buffer[0], &print_string[0]);
+  //SCI1_ISR(&SCI1, &SCI1, &string_buffer[0], &print_string[0]);
+  SCI1_ISR(&SCI0, &SCI0, &string_buffer[0], &string_buffer[0]);
 
 	EnableInterrupts;
   
