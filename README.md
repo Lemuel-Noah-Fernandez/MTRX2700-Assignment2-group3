@@ -23,6 +23,16 @@ Testing:
   - Using different serial ports, and different combinations of serial ports to see if module can work with any serial ports
 
 ###Exercise 2:
+The Parser is the intermediatary that allows the serial inputs to be converted into usable parameters and definitions to run and act on the program. This sub-program is split into two primary parts. These are the
+   - The operator identifier, which idenfies which operation should be called of which there are two being 'run' which runs a function defined in main and other is say      which sends the string to the serial output port
+   - The operator handler which is the second step and is what determines what todo with the operand and parameters of the command
+
+The say command simplt outputs to serial what is put in the parameters section of the command ie "say the moon is big" the output to serial will be "the moon is big".
+
+The run command is comprised of three seperate sections, first being the operator to run, second being the function to be ran, and the parameters which the function may take in each seperated by a space
+
+TESTING
+   - Done using test strings which were hardcoded in and sent to the function  
 
 ###Exercise 3:
 The exercise 3 module utilised interrupts from the TC5 timer module, to output different frequencies onto the Dragonboard's PT5 port. This resulted in a tune being played. First, a variable `score` is defined as an unsigned int array and is sent to the terminal through use of the Exercise 2's functions. This variable is then used as an input argument for the `making_music` function, which loops through the score changing the `note` variable with each iteration, therby triggering the TC5 interrupt.
