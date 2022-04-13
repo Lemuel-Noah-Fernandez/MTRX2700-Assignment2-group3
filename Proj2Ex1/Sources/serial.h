@@ -34,7 +34,6 @@ enum {
 void SerialInitialise(int baudRate, SerialPort *serial_port);
 
 
-
 __interrupt void SCI1_ISR(SerialPort *serial_port_in, SerialPort *serial_port_out, char *pt, char *input_string);
  
  

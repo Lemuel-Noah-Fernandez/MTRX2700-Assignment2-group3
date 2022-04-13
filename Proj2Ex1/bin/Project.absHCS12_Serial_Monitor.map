@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "C:\Users\eglyn\Desktop\Proj2Ex1\bin\Project.abs"
+PROGRAM "C:\Users\eglyn\Desktop\Proj2Ex1\bin\Project.absHCS12_Serial_Monitor.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -26,7 +26,7 @@ Entry point: 0xC000 (_Startup)
 _startupData is allocated at 0xC00B and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x2000     26
+  _Range   pZeroOut       0x1100     26
   _Copy    *toCopyDownBeg 0xC119
 } _startupData;
 
@@ -40,8 +40,8 @@ Section Name                    Size  Type     From       To       Segment
 NON_BANKED                       184     R     0xC061     0xC118   ROM_C000
 .copy                             29     R     0xC119     0xC135   ROM_C000
 .text                            166     R   0x308000   0x3080A5   PAGE_30
-.stack                          4096   R/W     0x1000     0x1FFF   RAM
-.data                             24   R/W     0x2000     0x2017   RAM
+.stack                           256   R/W     0x1000     0x10FF   RAM
+.data                             24   R/W     0x1100     0x1117   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
 .abs_section_a                     1   N/I        0xA        0xA   .absSeg2
@@ -384,12 +384,12 @@ NON_BANKED                       184     R     0xC061     0xC118   ROM_C000
 .abs_section_2ae                   2   N/I      0x2AE      0x2AF   .absSeg339
 .abs_section_2be                   2   N/I      0x2BE      0x2BF   .absSeg340
 .abs_section_ff80                126     R     0xFF80     0xFFFD   .absSeg341
-.bss                               2   R/W     0x2018     0x2019   RAM
+.bss                               2   R/W     0x1118     0x1119   RAM
 .vectSeg342_vect                   2     R     0xFFFE     0xFFFF   .vectSeg342
 
 Summary of section sizes per section type:
 READ_ONLY (R):         25C (dec:      604)
-READ_WRITE (R/W):     101A (dec:     4122)
+READ_WRITE (R/W):      11A (dec:      282)
 NO_INIT (N/I):         190 (dec:      400)
 
 *********************************************************************************************
@@ -758,7 +758,7 @@ MODULE:                 -- Start12.c.o --
 - VARIABLES:
      _startupData                              C00B       6       6       3   .startData  
 - LABELS:
-     __SEG_END_SSTACK                          2000       0       0       1               
+     __SEG_END_SSTACK                          1100       0       0       1               
 MODULE:                 -- rtshc12.c.o (ansib.lib) --
 - PROCEDURES:
      _CASE_CHECKED_BYTE                        C061      14      20       1   NON_BANKED  
@@ -768,9 +768,9 @@ MODULE:                 -- serial.c.o --
      SerialInitialise                        308064      42      66       4   .text       
      SCI1_ISR                                  C075      A2     162       2   NON_BANKED  
 - VARIABLES:
-     SCI1                                      2000       C      12       2   .data       
-     SCI0                                      200C       C      12       2   .data       
-     counter                                   2018       2       2       8   .bss        
+     SCI1                                      1100       C      12       2   .data       
+     SCI0                                      110C       C      12       2   .data       
+     counter                                   1118       2       2       8   .bss        
 MODULE:                 -- isr_vectors.c.o --
 - PROCEDURES:
      UnimplementedISR                          C117       2       2      62   NON_BANKED  
@@ -787,7 +787,7 @@ MODULE STATISTIC
   rtshc12.c.o (ansib.lib)                      0     20      0
   serial.c.o                                  26    228      0
   isr_vectors.c.o                              0      2    126
-  other                                     4096     12     29
+  other                                      256     12     29
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
@@ -1834,9 +1834,9 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXDLR                                 2BC       1       1       0   .abs_section_2bc
      _CAN4TXTBPR                                2BD       1       1       0   .abs_section_2bd
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
-     SCI1                                      2000       C      12       2   .data       
-     SCI0                                      200C       C      12       2   .data       
-     counter                                   2018       2       2       8   .bss        
+     SCI1                                      1100       C      12       2   .data       
+     SCI0                                      110C       C      12       2   .data       
+     counter                                   1118       2       2       8   .bss        
      _Startup                                  C000       B      11       0   .init       
      STRING.Dudes.be.like..Subwa.1             C015      4C      76       1   .rodata1    
      _CASE_CHECKED_BYTE                        C061      14      20       1   NON_BANKED  
@@ -1867,14 +1867,14 @@ COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
 ------- ROM-ADDRESS: 0xC119 ---- SIZE       4 ---
 Filling bytes inserted
- 00172001
-------- ROM-ADDRESS: 0xC11D ---- RAM-ADDRESS: 0x2001 ---- SIZE      11 ---
+ 00171101
+------- ROM-ADDRESS: 0xC11D ---- RAM-ADDRESS: 0x1101 ---- SIZE      11 ---
 Name of initialized Object : SCI1:1
  D000D100D2 00D300D700 D4
 ------- ROM-ADDRESS: 0xC128 ---- SIZE       1 ---
 Filling bytes inserted
  00
-------- ROM-ADDRESS: 0xC129 ---- RAM-ADDRESS: 0x200D ---- SIZE      11 ---
+------- ROM-ADDRESS: 0xC129 ---- RAM-ADDRESS: 0x110D ---- SIZE      11 ---
 Name of initialized Object : SCI0:1
  C800C900CA 00CB00CF00 CC
 ------- ROM-ADDRESS: 0xC134 ---- SIZE       2 ---

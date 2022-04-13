@@ -6,16 +6,14 @@
 #include "serial.h"
 
 
-// instantiate the serial port parameters
-//   note: the complexity is hidden in the c file
+// establish the serial port
 SerialPort SCI1 = {&SCI1BDH, &SCI1BDL, &SCI1CR1, &SCI1CR2, &SCI1DRL, &SCI1SR1};
 SerialPort SCI0 = {&SCI0BDH, &SCI0BDL, &SCI0CR1, &SCI0CR2, &SCI0DRL, &SCI0SR1};
 
 int counter = 0;
 
 
-// InitialiseSerial - Initialise the serial port SCI1
-// Input: baudRate is tha baud rate in bits/sec
+// InitialiseSerial
 void SerialInitialise(int baudRate, SerialPort *serial_port) {
   
   // Baud rate calculation from datasheet
@@ -45,6 +43,7 @@ void SerialInitialise(int baudRate, SerialPort *serial_port) {
   *(serial_port->ControlRegister2) = SCI1CR2_RE_MASK | SCI1CR2_TE_MASK | SCI1CR2_TCIE_MASK;
   *(serial_port->ControlRegister1) = 0x00;
 }
+
 
 
 // look at the isr_vectors.c for where this function is 
